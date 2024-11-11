@@ -1,144 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sci-Fi Portfolio</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-  <style>
-    /* Sci-fi inspired background */
-    body {
-      background: radial-gradient(circle, #0b0c10, #1f2833);
-      color: #66fcf1;
-      font-family: 'Roboto Mono', monospace;
-      scroll-behavior: smooth;
-    }
-    .star-field {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('src/scifi2.jpg') repeat;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-    }
-    .nav-link {
-      transition: color 0.3s ease-in-out;
-    }
-    .nav-link:hover {
-      color: #1f2833;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Porathur</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <style>
+        /* Sci-fi inspired background */
+        body {
+            background: radial-gradient(circle, #0b0c10, #1f2833);
+            color: #66fcf1;
+            font-family: 'Roboto Mono', monospace;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .carousel-content {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-item {
+            flex: 1 0 100%;
+            /* For single item in mobile view */
+        }
+
+        .carousel-item .card {
+            padding: 1rem;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 1 0 50%;
+                /* For two items per view on medium screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .carousel-item {
+                flex: 1 0 33.33%;
+                /* For three items per view on large screens */
+            }
+        }
+
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('src/scifi2.jpg') repeat;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #1f2833;
+        }
+    </style>
 </head>
+
 <body class="relative min-h-screen">
-  <div class="star-field"></div>
+    <div class="star-field"></div>
 
-  <!-- Navbar -->
-  <header class="z-10 bg-transparent backdrop-blur-lg border-gray-700 px-6 py-4">
-    <nav class="flex justify-between items-center max-w-6xl mx-auto">
-        <img src="src/dav-nobg.png" alt="Logo" class="w-20 h-20">
-      <!-- <h1 class="text-xl font-bold text-neon">David Porathur</h1> -->
-      <button id="navToggle" class="text-neon md:hidden">☰</button>
-      <ul id="navLinks" class="hidden md:flex md:flex-row space-y-0 space-x-6 transition-all duration-300 ease-in-out">
-        <li><a href="#about" class="nav-link hover:text-gray-400">About</a></li>
-        <li><a href="#projects" class="nav-link hover:text-gray-400">Projects</a></li>
-        <li><a href="#contact" class="nav-link hover:text-gray-400">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Navbar -->
+    <header class="z-10 bg-transparent backdrop-blur-lg border-gray-700 px-6 py-4">
+        <nav class="flex justify-between items-center max-w-6xl mx-auto">
+            <img src="src/dav-nobg.png" alt="Logo" class="w-20 h-20">
+            <!-- <h1 class="text-xl font-bold text-neon">David Porathur</h1> -->
+            <button id="navToggle" class="text-neon md:hidden">☰</button>
+            <ul id="navLinks"
+                class="hidden md:flex md:flex-row space-y-0 space-x-6 transition-all duration-300 ease-in-out">
+                <li><a href="#about" class="nav-link hover:text-gray-400">About</a></li>
+                <li><a href="#projects" class="nav-link hover:text-gray-400">Projects</a></li>
+                <li><a href="#contact" class="nav-link hover:text-gray-400">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="bg-black relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
-    <img src="src/dav-nobg.png" alt="Logo" class="w-40 h-40 mb-6">
-    <h2 class="text-4xl sm:text-6xl font-bold text-neon">Hi there, I'm David Porathur</h2>
-    <p class="mt-4 text-lg text-gray-400">An Engineering Student Specializing in AI ML and Internet of Things</p>
-    <a href="#about">
-      <button class="border-solid border-2 border-sky-500  mt-8 px-6 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Explore My Profile</button>
-    </a>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="relative z-10 max-w-4xl mx-auto px-6 py-16 min-h-screen">
-    <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
-    <div class="flex flex-col items-center md:flex-row md:space-x-8 text-center md:text-left">
-      <div class="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-neon mb-6 md:mb-0">
-        <img src="src/your-photo.jpg" alt="Your Photo" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <p class="text-gray-300 leading-relaxed mb-4">
-          I'm a passionate engineering student fascinated by cutting-edge technology and sci-fi concepts. My areas of interest include AI, robotics, and space exploration.
-        </p>
-        <a href="src/your-resume.pdf" download>
-          <button class="mt-4 px-4 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Download Resume</button>
+    <!-- Hero Section -->
+    <section class="bg-black relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
+        <img src="src/dav-nobg.png" alt="Logo" class="w-40 h-40 mb-6">
+        <h2 class="text-4xl sm:text-6xl font-bold text-neon">Hi there, I'm David Porathur</h2>
+        <p class="mt-4 text-lg text-gray-400">An Engineering Student at Fr.CRCE, Bandra, currently pursuing BE in
+            Electronics and Computer Science Engineering</p>
+        <a href="#about">
+            <button
+                class="border-solid border-2 border-sky-500  mt-8 px-6 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Explore
+                My Profile</button>
         </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="relative z-10 max-w-6xl mx-auto px-6 py-16 min-h-screen">
-    <h2 class="text-3xl font-bold text-center mb-6">Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">AI Drone Swarm</h3>
-        <p class="text-gray-300 mb-4">Developed a swarm of drones powered by machine learning algorithms for complex coordination tasks.</p>
-        <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
-      </div>
-      <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Space Robotics</h3>
-        <p class="text-gray-300 mb-4">Designed autonomous robotic arms for zero-gravity environments.</p>
-        <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
-      </div>
-      <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Quantum Computing</h3>
-        <p class="text-gray-300 mb-4">Developed quantum algorithms for faster data processing.</p>
-        <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="relative z-10 max-w-4xl mx-auto px-6 py-16 min-h-screen">
+        <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
+        <div class="flex flex-col items-center md:flex-row md:space-x-8 text-center md:text-left">
+            <div class="w-60 h-60 rounded-full overflow-hidden shadow-lg border-4 border-neon mb-6 md:mb-0">
+                <img src="src/david5e.png" alt="Your Photo" class="w-full h-full object-cover">
+            </div>
+            <div class="border-solid border-2 border-sky-500 bg-black bg-opacity-80 pl-4 pr-4 pt-4 pb-8 rounded-xl">
+                <div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        I'm a passionate engineering student fascinated by cutting-edge technology. <br>My areas of
+                        interest include AI ML, Robotics, IoT and Cybersecurity.
+                    </p>
 
-  <!-- Contact Section -->
-  <section id="contact" class="relative z-10 max-w-4xl mx-auto px-6 py-16 text-center min-h-screen">
-    <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
-    <p class="text-gray-300 mb-8">Interested in collaborating or want to learn more about my projects? Reach out!</p>
-    <form action="#" class="space-y-6">
-      <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-teal-500" required>
-      <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-teal-500" required>
-      <textarea placeholder="Your Message" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-teal-500" rows="4" required></textarea>
-      <button type="submit" class="w-full py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Send Message</button>
-    </form>
-  </section>
+                    <div>
+                        <div class="flex">
+                            <button id="btn1"
+                                class="border-solid border-2 border-sky-500 mt-4 px-4 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Tech
+                                Stack</button>
+                            <button id="btn2"
+                                class="border-solid border-2 border-sky-500 mt-4 px-4 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Experience</button>
+                        </div>
+                        <div id="div1" class="border-solid border-2 border-sky-500 hidden">
+                            <ul class="list-disc mx-10 mt-2 mb-2 text-left">
+                                <li>C/C++</li>
+                                <li>Python</li>
+                                <li>Embeded C</li>
+                                <li>HTML,CSS, Tailwind CSS</li>
+                                <li>ESP32, Arduino</li>
+                                <li>Raspberry Pi</li>
+                                <li>Robotics</li>
+                                <li>OpenCV</li>
+                                <li>React, Next.js</li>
+                                <li>Firebase</li>
+                                <li>Flask</li>
+                            </ul>
 
-  <footer class="relative z-10 text-center py-6 text-gray-400">
-    &copy; 2023 Sci-Fi Portfolio | Designed by [Your Name]
-  </footer>
+                        </div>
+                        <div id="div2" class="hidden border-solid border-2 border-sky-500">
+                            <ul class="list-decimal mx-10 mt-2 mb-2 text-left">
+                                <li>Technical Lead at Project Cell CRCE <br>[MAR 2024 - Present]
+                                    <ul class="list-disc mx-8">
+                                        <li>Participating in various Inter-College Competitions and exploring IoT,
+                                            Robotics, AI/ML and Web Development.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li>Internship at SUPERNOVA LIGHTING Ltd. <br> [JUN 2024-SEPT 2024]
+                                    <ul class="list-disc mx-8">
+                                        <li>Researching and Developing a new IoT product and customising it for the
+                                            Indian Market.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li>Techfest, IIT Bombay Workshops <br>[DEC 2023]
+                                    <ul class="list-disc mx-8">
+                                        <li>Artificial Intelligence Workshop</li>
+                                        <li>Machine Learning Workshop</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li>St. George High School
+                                    <ul class="list-disc mx-8">
+                                        <li>Science Club</li>
+                                        <li>Intra School Science Exhibitions</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li>Nehru Science Centre Vacation Workshops <br>[2018-2019]
+                                    <ul class="list-disc mx-8">
+                                        <li>Aero-modelling</li>
+                                        <li>Model Rocketry</li>
+                                        <li>Arduino & Robotics</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-  <script>
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth"
+                    <br>
+                    <a href="https://drive.usercontent.google.com/u/0/uc?id=1BMVSoMCRT-sXBX-BuYOIYptJUOnfWYJH&export=download"
+                        download>
+                        <button
+                            class="border-solid border-2 border-sky-500 mt-4 px-4 py-2 bg-neon rounded-lg font-bold hover:bg-teal-400 transition">Download
+                            Resume</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="relative z-10 max-w-6xl mx-auto px-6 py-16 min-h-screen">
+        <h2 class="text-3xl font-bold text-center mb-6">Projects</h2>
+        <div class="relative overflow-hidden">
+            <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mx-2">
+                    <h3 class="text-xl font-semibold mb-2">AI Drone Swarm</h3>
+                    <p class="text-gray-300 mb-4">Developed a swarm of drones powered by machine learning algorithms for
+                        complex coordination tasks.</p>
+                    <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mx-2">
+                    <h3 class="text-xl font-semibold mb-2">Space Robotics</h3>
+                    <p class="text-gray-300 mb-4">Designed autonomous robotic arms for zero-gravity environments.</p>
+                    <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mx-2">
+                    <h3 class="text-xl font-semibold mb-2">Quantum Computing</h3>
+                    <p class="text-gray-300 mb-4">Developed quantum algorithms for faster data processing.</p>
+                    <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/3 mx-2">
+                    <h3 class="text-xl font-semibold mb-2">Quantum Computing</h3>
+                    <p class="text-gray-300 mb-4">Developed quantum algorithms for faster data processing.</p>
+                    <button class="bg-neon px-4 py-2 rounded-lg text-sm">Read More</button>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button id="prevBtn"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-neon p-2 rounded-full">‹</button>
+            <button id="nextBtn"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-neon p-2 rounded-full">›</button>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="contact" class="py-16 px-4 bg-gray-0">
+        <div class="max-w-2xl mx-auto text-center bg-black bg-opacity-60 pl-4 pr-4 pt-4 pb-8 rounded-xl">
+            <h2 class="text-3xl font-bold mb-6">Connect with Me</h2>
+            <p class="mb-8">Interested in collaborating or want to learn more about my projects?<br> Reach out!</p>
+
+            <!-- Card -->
+            <div class="border-solid border-2 border-sky-500 bg-gray-0 p-6 rounded-lg shadow-lg">
+                <div class="flex justify-center gap-9">
+                    <!-- GitHub -->
+                    <a href="https://github.com/41vi4p" target="_blank" class="text-gray-300 hover:text-gray-100">
+                        <i class="fab fa-github text-4xl"></i>
+                        <p class="mt-2">GitHub</p>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/david-porathur-33780228a" target="_blank"
+                        class="text-gray-300 hover:text-gray-100">
+                        <i class="fab fa-linkedin text-4xl"></i>
+                        <p class="mt-2">LinkedIn</p>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:david.porathuredu@gmail.com" class="text-gray-300 hover:text-gray-100">
+                        <i class="fas fa-envelope text-4xl"></i>
+                        <p class="mt-2">Email</p>
+                    </a>
+
+                    <!-- Additional Social Icons (Optional) -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="relative z-10 text-center py-6 text-gray-400">
+        &copy; 2024 | Designed by David Porathur
+    </footer>
+
+    <script>
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
         });
-      });
-    });
 
-    // Toggle for responsive navbar on mobile
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
+        // Toggle for responsive navbar on mobile
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
 
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('hidden');
-      navLinks.classList.toggle('flex');
-      navLinks.classList.toggle('flex-col'); // Stacks links vertically in mobile view
-      navLinks.classList.toggle('items-center'); // Center links in mobile view
-      navLinks.classList.toggle('space-y-4'); // Adds spacing between links in mobile view
-    });
-  </script>
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col'); // Stacks links vertically in mobile view
+            navLinks.classList.toggle('items-center'); // Center links in mobile view
+            navLinks.classList.toggle('space-y-4'); // Adds spacing between links in mobile view
+        });
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+
+        // Add event listener for Button 1
+        btn1.addEventListener('click', function () {
+            div1.classList.remove('hidden');  // Show Div 1
+            div2.classList.add('hidden');     // Hide Div 2
+        });
+
+        // Add event listener for Button 2
+        btn2.addEventListener('click', function () {
+            div2.classList.remove('hidden');  // Show Div 2
+            div1.classList.add('hidden');     // Hide Div 1
+        });
+    </script>
+    <script>
+        let currentSlide = 0;
+        const carousel = document.getElementById('carousel');
+        const totalSlides = document.querySelectorAll('#carousel > div').length;
+
+        // Handle next and previous buttons
+        document.getElementById('prevBtn').addEventListener('click', moveToPreviousSlide);
+        document.getElementById('nextBtn').addEventListener('click', moveToNextSlide);
+
+        function moveToNextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function moveToPreviousSlide() {
+            currentSlide = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slideWidth = carousel.querySelector('div').offsetWidth;
+            carousel.style.transition = 'transform 0.4s ease';
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        // Scroll behavior for carousel
+        carousel.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) {
+                // Scroll down (move to next slide)
+                moveToNextSlide();
+            } else {
+                // Scroll up (move to previous slide)
+                moveToPreviousSlide();
+            }
+            e.preventDefault(); // Prevent the page from scrolling
+        });
+
+        // Swipe support for touch events (mobile and touchpad)
+        let startX = 0;
+        let isDragging = false;
+
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            carousel.style.transition = ''; // Remove transition for smooth dragging
+        });
+
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+
+            const currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const slideWidth = carousel.querySelector('div').offsetWidth;
+
+            // If on touchpad, the deltaX value can be subtle; we may need to adjust the threshold
+            const adjustedDeltaX = deltaX / 2; // Adjust sensitivity for touchpad
+            carousel.style.transform = `translateX(${adjustedDeltaX - currentSlide * slideWidth}px)`;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            isDragging = false;
+            const endX = e.changedTouches[0].clientX;
+            const slideWidth = carousel.querySelector('div').offsetWidth;
+            const deltaX = endX - startX;
+
+            // Determine swipe direction based on adjusted swipe
+            if (deltaX > 50) { // Swipe right
+                moveToPreviousSlide();
+            } else if (deltaX < -50) { // Swipe left
+                moveToNextSlide();
+            } else {
+                updateCarousel(); // Snap back to current slide if swipe is too small
+            }
+        });
+
+        // Touchpad support for swipe gestures (detect horizontal movement)
+        let touchpadStartX = 0;
+        let isTouchpadSwiping = false;
+
+        // Listen for touchmove events for touchpad
+        carousel.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1) {
+                const currentX = e.touches[0].clientX;
+                const deltaX = currentX - touchpadStartX;
+
+                // Detect swiping action only on horizontal axis
+                if (Math.abs(deltaX) > 5) { // If the movement is large enough, consider it as a swipe
+                    isTouchpadSwiping = true;
+                    touchpadStartX = currentX;
+                }
+
+                if (isTouchpadSwiping) {
+                    // Move carousel based on swipe distance
+                    const slideWidth = carousel.querySelector('div').offsetWidth;
+                    const adjustedDeltaX = deltaX / 3; // Make sure touchpad swipe is smoother
+                    carousel.style.transform = `translateX(${adjustedDeltaX - currentSlide * slideWidth}px)`;
+                }
+            }
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (isTouchpadSwiping) {
+                isTouchpadSwiping = false;
+                const endX = e.changedTouches[0].clientX;
+                const slideWidth = carousel.querySelector('div').offsetWidth;
+                const deltaX = endX - touchpadStartX;
+
+                // Determine swipe direction
+                if (deltaX > 50) { // Swipe right
+                    moveToPreviousSlide();
+                } else if (deltaX < -50) { // Swipe left
+                    moveToNextSlide();
+                } else {
+                    updateCarousel(); // Snap back to current slide if swipe is too small
+                }
+            }
+        });
+    </script>
+
+
 </body>
+
 </html>
